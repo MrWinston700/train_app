@@ -3,11 +3,12 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
-    def create
-        if @user 
-            @user = User.create(user_params) 
-
-        else 
+    def create 
+        @user = User.new(user_params)
+        if @user.valid?
+            @user.save
+            redirect_to user_path(@user)
+        else
             render new_user_path
         end
     end 
@@ -16,8 +17,14 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end 
 
+    #this will not work at the moment
     def update
-
+        if @user.valid?
+            @user.save
+            redirect_to user_path(@user)
+        else
+            render new_user_path
+        end
     end 
 
     def show 
