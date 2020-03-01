@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   root 'sessions#home'
+  resources :sessions
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

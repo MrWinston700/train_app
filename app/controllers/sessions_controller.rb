@@ -4,11 +4,13 @@ class SessionsController < ApplicationController
   
     def new
       @user = User.new
+      binding.pry
     end
   
     def create
-  
+    
       @user = User.find_by(name: params[:user][:name])
+      binding.pry
       if @user && @user.authenticate(params[:user][:password])
         log_in @user 
         redirect_to user_path(@user)
@@ -23,6 +25,4 @@ class SessionsController < ApplicationController
       log_out
       redirect_to root_path '/'
     end
-end
-
 end
