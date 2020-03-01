@@ -1,9 +1,9 @@
-<%= form_tag('/signin', method: post) %>
-    <%= f.label :name %>
-    <%= f.text_field_tag :name %>
+<%= form_tag('/signin') do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
     <br>
-    <%= f.label :password %>
-    <%= f.password_field_tag :password%>
+    <%= label_tag :password %>
+    <%= password_field_tag :password%>
     
-    <%= f.submit_tag_ "sign in" %>
-<% end %> 
+    <%= submit_tag "sign in" %>
+<% end %>

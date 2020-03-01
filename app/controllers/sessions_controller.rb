@@ -4,14 +4,13 @@ class SessionsController < ApplicationController
   
     def new
       @user = User.new
-      binding.pry
     end
   
     def create
-    
-      @user = User.find_by(name: params[:user][:name])
-      binding.pry
-      if @user && @user.authenticate(params[:user][:password])
+        binding.pry
+      @user = User.find_by(name: params[:name])
+      
+      if @user && @user.authenticate(params[:password])
         log_in @user 
         redirect_to user_path(@user)
       else
