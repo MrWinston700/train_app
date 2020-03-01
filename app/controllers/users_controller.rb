@@ -4,7 +4,11 @@ class UsersController < ApplicationController
     end
 
     def create 
-        
+        if request.env['omniauth.auth'] != nil
+            @user = User.find_by(name: request.env['omniauth.auth']['info']['name'])
+          else
+            @user = User.find_by(name: params[:name])
+          end
         @user = User.new(user_params)
         if @user.valid?
             @user.save
