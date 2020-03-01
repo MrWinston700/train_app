@@ -1,3 +1,6 @@
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
 <%= form_tag('/signin') do %>
     <%= label_tag :name %>
     <%= text_field_tag :name %>

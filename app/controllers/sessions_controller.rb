@@ -7,8 +7,11 @@ class SessionsController < ApplicationController
     end
   
     def create
-        binding.pry
-      @user = User.find_by(name: params[:name])
+      if request.env['omniauth.auth'] != nil
+        @user = User.find_by(name: request.env['omniauth.auth']['info']['name'])
+      else
+        @user = User.find_by(name: params[:name])
+      end
       
       if @user && @user.authenticate(params[:password])
         log_in @user 
