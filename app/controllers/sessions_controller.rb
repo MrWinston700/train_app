@@ -13,16 +13,18 @@ class SessionsController < ApplicationController
 
         @user = User.create(name: request.env['omniauth.auth']['info']['name'], password: SecureRandom.hex) unless @user !=nil
 
-      else
-        @user = User.find_by(name: params[:name])
-      end
-      
-      if @user && @user.authenticate(params[:password])
         log_in @user 
         redirect_to user_path(@user)
       else
-        flash[:error] = 'Invalid name and/or password combination'
-        redirect_to signin_path
+        @user = User.find_by(name: params[:name])
+        
+          if @user && @user.authenticate(params[:password])
+            log_in @user 
+            redirect_to user_path(@user)
+          else
+            flash[:error] = 'Invalid name and/or password combination'
+            redirect_to signin_path
+          end
       end
     end
   
