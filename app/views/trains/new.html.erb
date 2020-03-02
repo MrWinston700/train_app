@@ -1,12 +1,12 @@
 <%= form_for(@train) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :ident_number %>
+    <%= f.text_field :ident_number %>
     <br>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.label :model %>
+    <%= f.text_field :model %>
     <br>
-    <%= f.label :password %>
-    <%= f.password_field :password%>
+    <%= f.label :max_pax %>
+    <%= f.text_field :max_pax%>
     
     <%= f.submit %>
 

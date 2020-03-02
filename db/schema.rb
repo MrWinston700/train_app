@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_225432) do
   end
 
   create_table "trains", force: :cascade do |t|
-    t.string "identification_number"
+    t.string "ident_number"
     t.string "model"
     t.integer "max_pax"
     t.boolean "operating", default: true
