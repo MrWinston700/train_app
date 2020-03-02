@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
         @user = User.find_by(name: request.env['omniauth.auth']['info']['name'])
           
         @user = User.create(name: request.env['omniauth.auth']['info']['name'], password: SecureRandom.hex) unless @user !=nil
-        binding.pry
         log_in @user 
         redirect_to user_path(@user)
       else

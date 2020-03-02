@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :routes
+  resources :trains
   resources :users, only: [:new, :create, :show]
   root 'sessions#home'
   resources :sessions
