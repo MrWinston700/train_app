@@ -8,15 +8,14 @@
     <%= f.label :max_pax %>
     <%= f.text_field :max_pax%>
 
-    <% if false %>
-    <%= f.fields_for :routes, @train.routes.build do |nest_field| %>
+    
+    <%= f.fields_for :train_routes, @train.train_routes.build do |nest_field| %>
         
         <%= nest_field.label :destination, "destination:" %>
         <%= nest_field.text_field :destination %>
 
         <%= nest_field.label :departing, "departing:" %>
         <%= nest_field.text_field :departing %>
-    <% end %>
     <% end %>
     <%= f.submit %>
 

@@ -16,6 +16,6 @@ class TrainsController < ApplicationController
     private
 
     def train_params
-        params.require(:train).permit(:ident_number, :model, :max_pax, routes_attributes: [:destination, :departing, :train_id])
+        params.require(:train).permit(:ident_number, :model, :max_pax, train_routes_attributes: [:destination, :departing, :train_id])
     end
 end

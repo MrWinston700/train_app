@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_225432) do
+ActiveRecord::Schema.define(version: 2020_03_03_040735) do
 
-  create_table "routes", force: :cascade do |t|
+  create_table "train_routes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "train_id"
     t.string "destination"
