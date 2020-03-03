@@ -1,0 +1,2 @@
+class TrainRoute < ApplicationRecord
+end
