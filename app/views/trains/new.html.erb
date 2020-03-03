@@ -7,16 +7,16 @@
     <br>
     <%= f.label :max_pax %>
     <%= f.text_field :max_pax%>
-    
-    <%= f.submit %>
 
-    <%= f.fields_for :route, Route.new do |nest_field| %>
+    <%= f.fields_for :routes, train.routes.build do |nest_field| %>
+        
         <%= nest_field.label :destination, "destination:" %>
         <%= nest_field.text_field :destination %>
 
         <%= nest_field.label :departing, "departing:" %>
         <%= nest_field.text_field :departing %>
+    <% end %>
+    
+    <%= f.submit %>
 
-      <% end %>
-
-<% end %> 
+<% end %>
