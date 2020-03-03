@@ -1,6 +1,7 @@
 require 'securerandom'
 class SessionsController < ApplicationController
-    def home     
+    def home  
+      @routes = TrainRoute.all   
     end
   
     def new
