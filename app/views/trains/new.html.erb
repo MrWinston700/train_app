@@ -10,4 +10,13 @@
     
     <%= f.submit %>
 
+    <%= f.fields_for :route, Route.new do |nest_field| %>
+        <%= nest_field.label :destination, "destination:" %>
+        <%= nest_field.text_field :destination %>
+
+        <%= nest_field.label :departing, "departing:" %>
+        <%= nest_field.text_field :departing %>
+
+      <% end %>
+
 <% end %> 
