@@ -1,12 +1,14 @@
 <h1> <%= @user.name %> </h1>
 
 <% if @user.train_routes.empty? %>
+    <p>you currently do not have a train route</p>
 <% else %>
     <p> these are trains you have leased </p>
     <% @user.train_routes.each do |route| %>
         <%= route.departing %>
         <%= route.destination%>
+        <br>
         <%= route.train.model %>
-        <%= route.traim.ident_number %>
+        <%= route.train.ident_number %>
     <% end %>
 <% end %>
