@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     end
   
     def new
+      @error = nil
       @user = User.new
     end
   
@@ -22,8 +23,8 @@ class SessionsController < ApplicationController
             log_in @user 
             redirect_to user_path(@user)
           else
-            flash[:error] = 'Invalid name and/or password combination'
-            redirect_to signin_path
+            @error = "could not log in. user or password is invalid"
+            render 'sessions/new'
           end
       end
     end

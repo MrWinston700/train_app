@@ -1,5 +1,9 @@
-<% if flash[:error] %>
-    <p><%= flash[:error] %></p>
+<% if @error != nil%>
+  <div class="fields_with_errors">
+    <ul>
+      <li style="color:red;"><%= @error %></li>
+    </ul>
+  </div>
 <% end %>
 <%= form_tag('/signin') do %>
     <%= label_tag :name %>

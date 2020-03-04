@@ -1,3 +1,12 @@
+<% if @train.errors.any? %>
+  <div class="fields_with_errors">
+    <ul>
+    <% @train.errors.full_messages.each do |msg| %>
+      <li style="color:red;"><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <% if current_user.admin? %>
 <%= form_for(@train) do |f| %>
     <%= f.label :ident_number %>

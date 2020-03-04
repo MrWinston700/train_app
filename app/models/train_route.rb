@@ -20,5 +20,9 @@ class TrainRoute < ApplicationRecord
 
     end
 
+    def self.all_in_order
+        all.order(name: :desc)
+    end
+
     
 end
