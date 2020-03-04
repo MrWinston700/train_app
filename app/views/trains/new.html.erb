@@ -1,3 +1,4 @@
+<% if current_user.admin? %>
 <%= form_for(@train) do |f| %>
     <%= f.label :ident_number %>
     <%= f.text_field :ident_number %>
@@ -19,4 +20,5 @@
     <% end %>
     <%= f.submit %>
 
+<% end %>
 <% end %>

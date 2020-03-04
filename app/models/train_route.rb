@@ -1,6 +1,8 @@
 class TrainRoute < ApplicationRecord
     belongs_to :user, required: false
     belongs_to :train
+    validates :departing, presence: true
+    validates :destination, presence: true
 
     def full?
         @total_user = 0

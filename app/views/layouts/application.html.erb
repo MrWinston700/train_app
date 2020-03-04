@@ -17,7 +17,7 @@
     <% else %>
     <%= link_to "Home", root_path %>
     <%= link_to "profile", user_path(current_user) %>
-    <%= link_to "log out" logout_path %>
+    <%= link_to "log out", logout_path %>
     <% end %>
   </nav>
     <%= yield %>

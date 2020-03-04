@@ -5,10 +5,11 @@
 <% else %>
     <p> these are trains you have leased </p>
     <% @user.train_routes.each do |route| %>
-        <%= route.departing %>
-        <%= route.destination%>
+        
+        <p>train model: <%= route.train.model %></p>
+        <p>train id number: <%= route.train.ident_number %></p>
+        <p>departing: <%= route.departing %></p>
+        <p>destination: <%= route.destination%></p>
         <br>
-        <%= route.train.model %>
-        <%= route.train.ident_number %>
     <% end %>
 <% end %>
