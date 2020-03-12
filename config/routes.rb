@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new' 
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create' lkl
   
   #match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
