@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :trains, only: [:create, :new]
   resources :users, only: [:new, :create, :show]
   root 'sessions#home'
-  resources :sessions, only [:home, :new, :create, :destroy]
-  get '/signin' => 'sessions#new'
+  resources :sessions, only: [:home, :new, :create, :destroy]
+  get '/signin' => 'sessions#new' l
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#create'
