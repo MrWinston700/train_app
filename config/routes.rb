@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   root 'sessions#home'
   resources :sessions, only: [:home, :new, :create, :destroy]
-  get '/signin' => 'sessions#new' l
+  get '/signin' => 'sessions#new' 
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#create'
