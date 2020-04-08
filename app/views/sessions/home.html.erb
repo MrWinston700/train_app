@@ -2,13 +2,13 @@
     <% @routes.each do |route| %>
         <%= route.departing %>
         <%= route.destination %>
-        <% if route.full?%> 
-            <p>this train is full. try an earlier or later route</p>
-        <% else %>
             <%= form_tag('/train_routes', method: :post) do %>
                 <%= hidden_field_tag :route_id, route.id %>
-                <%= submit_tag 'book a seat' %>
+                <%= submit_tag 'book a train' %>
             <% end %>
-        <% end %>
     <% end %>  
+<% end %>
+
+<% if current_user.admin? %>
+ <%= link_to "create a new train", new_train_path %>
 <% end %>
