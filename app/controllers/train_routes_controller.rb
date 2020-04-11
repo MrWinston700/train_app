@@ -3,6 +3,6 @@ class TrainRoutesController < ApplicationController
         @train_route = TrainRoute.find_by(id: params[:route_id])
         current_user.train_routes << @train_route 
 
-        redirect_to user_path(current_user)
+        redirect_to root_path
     end
 end

@@ -6,10 +6,7 @@ class TrainsController < ApplicationController
 
     def create
         @train = Train.create(train_params)
-        
-        
-        redirect_to user_path(current_user)
-        binding.pry
+        redirect_to root_path
 
     end
 
