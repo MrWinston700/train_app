@@ -12,3 +12,9 @@
         <% end %>
     <% end %>  
 <% end %>
+
+<% if current_user != nil && current_user.admin? %>
+    <p><%= link_to "create a route", new_train_path %>
+<% end %>
+
+<p> check </p>
