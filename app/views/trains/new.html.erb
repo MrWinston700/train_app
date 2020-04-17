@@ -7,6 +7,7 @@
     </ul>
   </div>
 <% end %>
+
 <% if current_user.admin? %>
 <%= form_for(@train) do |f| %>
     <%= f.label :ident_number %>

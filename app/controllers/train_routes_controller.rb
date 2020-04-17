@@ -5,4 +5,11 @@ class TrainRoutesController < ApplicationController
 
         redirect_to root_path
     end
+
+    def destroy
+        binding.pry
+        @train_route = TrainRoute.find_by(id: params[:id])
+        @train_route.delete
+        redirect_to root_path
+    end
 end

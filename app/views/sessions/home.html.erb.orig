@@ -1,0 +1,22 @@
+<% if logged_in? %>
+    <% @routes.each do |route| %>
+        <%= route.departing %>
+        <%= route.destination %>
+            <%= form_tag('/train_routes', method: :post) do %>
+                <%= hidden_field_tag :route_id, route.id %>
+                <%= submit_tag 'book a train' %>
+            <% end %>
+    <% end %>  
+<% end %>
+
+<<<<<<< HEAD
+<% if current_user != nil && current_user.admin? %>
+    <p><%= link_to "create a route", new_train_path %>
+<% end %>
+
+<p> check </p>
+=======
+<% if current_user.admin? %>
+ <%= link_to "create a new train", new_train_path %>
+<% end %>
+>>>>>>> b5795ea841be4e04294cfc87404759c3ea3f21b3

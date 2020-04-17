@@ -1,0 +1,14 @@
+<% if logged_in? %>
+    <% @routes.each do |route| %>
+        <%= route.departing %>
+        <%= route.destination %>
+        <% if route.full?%> 
+            <p>this train is full. try an earlier or later route</p>
+        <% else %>
+            <%= form_tag('/train_routes', method: :post) do %>
+                <%= hidden_field_tag :route_id, route.id %>
+                <%= submit_tag 'book a seat' %>
+            <% end %>
+        <% end %>
+    <% end %>  
+<% end %>
