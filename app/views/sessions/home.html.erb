@@ -2,13 +2,19 @@
     <% @routes.each do |route| %>
         <%= route.departing %>
         <%= route.destination %>
-            <%= form_tag('/train_routes', method: :post) do %>
-                <%= hidden_field_tag :route_id, route.id %>
-                <%= submit_tag 'book a train' %>
-            <% end %>
+        
+        <% if current_user.admin? %>
+            <p><%= link_to "delete this route", delete_train_app %></p>
+        <% end %>
+
+        <%= form_tag('/train_routes', method: :post) do %>
+            <%= hidden_field_tag :route_id, route.id %>
+            <%= submit_tag 'book a train' %>
+        <% end %>
+
     <% end %>  
 <% end %>
 
-<% if current_user.admin? %>
- <%= link_to "create a new train", new_train_path %>
+<% if current_user != nil && current_user.admin? %>
+    <p><%= link_to "create a route", new_train_path %></p>
 <% end %>
