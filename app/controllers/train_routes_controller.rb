@@ -7,7 +7,8 @@ class TrainRoutesController < ApplicationController
     end
 
     def destroy
-        @train_route = TrainRoute.find_by(id: params[:route_id])
+        binding.pry
+        @train_route = TrainRoute.find_by(id: params[:id])
         @train_route.delete
         redirect_to root_path
     end
