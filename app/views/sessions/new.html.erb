@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag "login.css" %>
+
+<div class="login-body">
+
 <% if @error != nil%>
   <div class="fields_with_errors">
     <ul>
@@ -5,13 +9,24 @@
     </ul>
   </div>
 <% end %>
-<%= form_tag('/signin') do %>
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
-    </br>
-    <%= label_tag :password %>
-    <%= password_field_tag :password%>
-    
-    <%= submit_tag "sign in" %>
-<% end %>
-<p><%= link_to 'Sign in with the GitHub', '/auth/github'%>.</p>
+
+
+<div class="login-div">
+  <p class="title">Login</p>
+  <div class="fields">
+    <%= form_tag('/signin') do %>
+      <%= text_field_tag :name, nil, placeholder: "name" %>
+      </br>
+      <%= password_field_tag :password, nil, placeholder: "password" %>
+  
+      <div class="signin-button">
+      <%= submit_tag "sign in" %>
+      </div>
+    <% end %>
+  </div>
+    <p id="githubLogin"><%= link_to 'Sign in with the GitHub', '/auth/github'%></p>
+  </div>
+
+</div>
+
+</div>

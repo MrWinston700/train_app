@@ -1,4 +1,9 @@
-<h1> <%= @user.name %> </h1>
+<h1> 
+    <%= @user.name %> 
+    <% if current_user.admin? %>
+        <strong> Admin </strong>
+    <% end %>
+</h1>
 
 <% if @user.train_routes.empty? %>
     <p>you currently do not have a train route</p>
