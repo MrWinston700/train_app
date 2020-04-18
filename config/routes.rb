@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :train_routes, only: [:create]
+  resources :train_routes, only: [:create, :destroy]
   resources :trains, only: [:create, :new]
   resources :users, only: [:new, :create, :show]
   root 'sessions#home'

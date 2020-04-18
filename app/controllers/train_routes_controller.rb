@@ -5,4 +5,9 @@ class TrainRoutesController < ApplicationController
 
         redirect_to root_path
     end
+
+    def destroy
+        train = TrainRoute.find_by(id: params[:id])
+        train.delete
+    end
 end
