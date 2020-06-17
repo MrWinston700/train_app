@@ -1,7 +1,28 @@
+<style>
+    body {
+        flex: 1 1 auto;
+    }
+
+    div.aRoute {
+        background-color: #eeeeee;
+        height: 360px;
+        width: 370px;
+        padding: 100px;
+        border-radius: 10px;
+    }
+
+    li {
+        font-size: 1.05em;
+        list-style: none;
+        padding-right: 20px;
+    }
+</style>
 </br>
 <p> book an entire train of your liking today </p>
 <% if logged_in? %>
+    <body>
     <% @routes.each do |route| %>
+        <div class = "aRoute">
         <li><strong>Departing: </strong><%= route.departing %></li>
         <li><strong>Destination: </strong><%= route.destination %></li>
         <li><strong>Model: </strong><%= route.train.model %></li>
@@ -16,6 +37,7 @@
         <%= form_tag('/train_routes', method: :post) do %>
             <%= hidden_field_tag :route_id, route.id %>
             <%= submit_tag 'book this route' %>
+        </div>
         <% end %>
         </br>
     <% end %> 
@@ -24,3 +46,4 @@
 <% if current_user != nil && current_user.admin? %>
     <p><%= link_to "create a route", new_train_path %></p>
 <% end %>
+</body>

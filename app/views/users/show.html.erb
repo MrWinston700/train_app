@@ -1,20 +1,38 @@
+<style>
+
+    div.aRoute {
+        background-color: #eeeeee;
+        height: 300px;
+        width: 370px;
+        padding: 80px;
+        border-radius: 10px;
+    }
+
+    li {
+        font-size: 1.05em;
+        list-style: none;
+        padding-right: 10px;
+    }
+</style>
+
 <h1> 
     <%= @user.name %> 
-    <% if current_user.admin? %>
+    <% if current_user != nil && current_user.admin? %>
         <strong> Admin </strong>
     <% end %>
 </h1>
 
 <% if @user.train_routes.empty? %>
-    <p>you currently do not have a train route</p>
+    <p>you currently do not have a train route. visit the home page to see available trains</p>
 <% else %>
     <p> these are trains you have leased </p>
     <% @user.train_routes.each do |route| %>
-        
-        <p>train model: <%= route.train.model %></p>
-        <p>train id number: <%= route.train.ident_number %></p>
-        <p>departing: <%= route.departing %></p>
-        <p>destination: <%= route.destination%></p>
+        <div class = "aRoute">
+        <li><strong>train model:</strong> <%= route.train.model %></li>
+        <li><strong>train id number:</strong> <%= route.train.ident_number %></li>
+        <li><strong>departing:</strong> <%= route.departing %></li>
+        <li><strong>destination:</strong> <%= route.destination%></li>
+        </div>
         <br>
     <% end %>
 <% end %>
