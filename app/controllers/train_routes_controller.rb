@@ -11,4 +11,15 @@ class TrainRoutesController < ApplicationController
         @train_route.delete
         redirect_to root_path
     end
+
+    def edit
+        @train_route = TrainRoute.find_by(id: params[:id])
+        
+        if @train_route.valid?
+            @train_route.save
+            redirect_to user_path(@train.user)
+        else
+            render
+        end
+    end
 end

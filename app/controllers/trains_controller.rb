@@ -7,7 +7,22 @@ class TrainsController < ApplicationController
     def create
         @train = Train.create(train_params)
         redirect_to root_path
+    end
 
+    def edit
+        @train = Train.find_by_id(params[:id])
+        
+        if @train.valid?
+            @train.save
+            redirect_to user_path(@train.user)
+        else
+            render 
+        end
+    end
+
+    def all 
+        @train = Train.find_by_id(params[:id])
+        
     end
 
     private

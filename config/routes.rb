@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :train_routes, only: [:create, :destroy]
-  resources :trains, only: [:create, :new]
-  resources :users, only: [:new, :create, :show]
+  resources :train_routes, only: [:create, :destroy, :edit]
+  resources :trains, only: [:create, :new, :edit]
+  resources :users, only: [:new, :create, :show, :edit]
   root 'sessions#home'
   resources :sessions, only: [:home, :new, :create, :destroy]
   get '/signin' => 'sessions#new'
