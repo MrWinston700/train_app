@@ -15,6 +15,10 @@ class TrainRoutesController < ApplicationController
     def edit
         @train_route = TrainRoute.find_by(id: params[:id])
         
+        
+    end
+
+    def update
         if @train_route.valid?
             @train_route.save
             redirect_to user_path(@train.user)

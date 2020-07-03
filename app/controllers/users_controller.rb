@@ -20,16 +20,19 @@ class UsersController < ApplicationController
     end 
 
     def edit 
+        @user = current_user
+    end
+    
+    def update 
         @user = User.find(params[:id])
-
-        if @user.valid?
-            @user.save
-            redirect_to user_path(@user)
-        else
-            render new_user_path
+        @password = @user.password_digest
+        @user.update(user_params)
+        if params[:password] == ""
+            @user.password = password
         end
-
-    end 
+        @user.save
+        redirect_to user_path(@user)
+    end
 
     def show 
         @user = User.find(params[:id])
