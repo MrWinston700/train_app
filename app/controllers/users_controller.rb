@@ -27,9 +27,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @password = @user.password_digest
         @user.update(user_params)
-        if params[:password] == ""
-            @user.password = password
-        end
         @user.save
         redirect_to user_path(@user)
     end

@@ -20,9 +20,15 @@ class TrainsController < ApplicationController
         end
     end
 
-    def all 
+    def show 
         @train = Train.find_by_id(params[:id])
         
+    end
+
+    def destroy
+        @train = Train.find_by(id: params[:id])
+        @train.delete 
+        redirect_to user_path
     end
 
     private

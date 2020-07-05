@@ -8,10 +8,12 @@
   </div>
 
   <%= form_for(@train_route) do |f| %>
-    <%= f.label :depaarture %>
-    <%= f.text_field :ident_number %>
+    <%= f.label :departing %>
+    <%= f.text_field :departing %>
     <br>
     <%= f.label :destination %>
     <%= f.text_field :destination %>
+
+    <%= f.submit %>
 <% end %>
 

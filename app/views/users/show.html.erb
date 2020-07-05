@@ -31,10 +31,9 @@
         <div class = "aRoute">
         <li><strong>train model:</strong> <%= route.train.model %></li>
         <li><strong>train id number:</strong> <%= route.train.ident_number %></li>
-        <li><strong>departing:</strong> <%= route.departing %></li>
-        <li><strong>destination:</strong> <%= route.destination%></li>
-        <button><%= link_to "delete train", new_train_path %></button>
-        <button><%= link_to "add new route", new_train_path
+        <button><%= link_to "see routes", user_train_routes_path %></button>
+        <button><%= link_to "delete train", delete_train_path %></button>
+        <button><%= link_to "add new route", new_user_train_route_path %></button>
         </div>
         <br>
     <% end %>

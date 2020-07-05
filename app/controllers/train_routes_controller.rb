@@ -1,4 +1,8 @@
 class TrainRoutesController < ApplicationController
+
+    def new
+        @train_route = TrainRoute.new
+    end
     def create
         @train_route = TrainRoute.find_by(id: params[:route_id])
         current_user.train_routes << @train_route 
@@ -26,4 +30,13 @@ class TrainRoutesController < ApplicationController
             render
         end
     end
+
+    def index
+        @user = User.find_by(id: params[:user_id])
+        @train_routes = @user.train_routes
+    end
+
+    def train_route_params
+        params.require(:train_route).permit(:departing, :destination, user_id)
+      end
 end
