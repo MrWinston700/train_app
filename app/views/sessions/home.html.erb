@@ -5,7 +5,7 @@
 
     div.aRoute {
         background-color: #eeeeee;
-        height: 360px;
+        height: 400px;
         width: 370px;
         padding: 100px;
         border-radius: 10px;
@@ -18,32 +18,41 @@
     }
 </style>
 </br>
-<p> book an entire train of your liking today </p>
+<p> book to your liking today </p>
 <% if logged_in? %>
     <body>
     <% @routes.each do |route| %>
+        <% if route.train != nil %>
         <div class = "aRoute">
         <li><strong>Departing: </strong><%= route.departing %></li>
         <li><strong>Destination: </strong><%= route.destination %></li>
         <li><strong>Model: </strong><%= route.train.model %></li>
         <li><strong>Maximum passengers: </strong><%= route.train.max_pax %></li>
         
-        
-        
+        <% if route.user %>
+        <li><strong>User: </strong><%= route.user.name %></li>
+        <%end%>
+
         <% if current_user.admin? %>
+            <button><%= link_to "edit train", edit_train_path(route.train) %></button>
+            <button><%= link_to "delete train", delete_train_path(route.train) %></button>
             <button><%= link_to "delete this route", delete_route_path(route) %></button>
         <% end %>
 
-        <%= form_tag('/train_routes', method: :post) do %>
+        <%= form_tag('/train_routes/save', method: :get) do %>
             <%= hidden_field_tag :route_id, route.id %>
-            <%= submit_tag 'book this route' %>
+            <button><%= submit_tag 'book this route' %></button>
         </div>
         <% end %>
+        <%end%>
+        
+        
+        
         </br>
     <% end %> 
 <% end %>
 
 <% if current_user != nil && current_user.admin? %>
-    <p><%= link_to "create a route", new_train_path %></p>
+    <p><%= link_to "create a train and route", new_train_path %></p>
 <% end %>
 </body>

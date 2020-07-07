@@ -6,6 +6,7 @@
     <% end %>
     </ul>
   </div>
+<% end %>
 
   <%= form_for(@train_route) do |f| %>
     <%= f.label :departing %>
@@ -15,5 +16,5 @@
     <%= f.text_field :destination %>
 
     <%= f.submit %>
-<% end %>
+    <% end %>
 

@@ -24,19 +24,22 @@
 </h1>
 
 <% if @user.train_routes.empty? %>
-    <p>you currently do not have a train route. visit the home page to see available trains</p>
+    <p>you currently do not have any route. visit the home page to see available trains</p>
 <% else %>
-    <p> these are trains you have leased </p>
+    <p> these are route you have leased </p>
     <% @user.train_routes.each do |route| %>
+        <% if route.train != nil %>
         <div class = "aRoute">
         <li><strong>train model:</strong> <%= route.train.model %></li>
         <li><strong>train id number:</strong> <%= route.train.ident_number %></li>
-        <button><%= link_to "see routes", user_train_routes_path %></button>
-        <button><%= link_to "delete train", delete_train_path %></button>
-        <button><%= link_to "add new route", new_user_train_route_path %></button>
+        <li><strong>departing:</strong> <%= route.departing %></li>
+        <li><strong>destination:</strong> <%= route.destination %></li>
+        <button><%= link_to "add new route to train", new_train_train_route_path(route.train) %></button>
         </div>
+        <% end %>
         <br>
     <% end %>
 <% end %>
 
-<p><%= link_to "edit user", edit_user_path %></p>
+<button><%= link_to "see all my routes", user_train_routes_path(@user) %></button>
+<button><%= link_to "edit user", edit_user_path %></button>

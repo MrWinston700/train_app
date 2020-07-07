@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :train_routes, only: [:create, :destroy, :edit]
+  resources :train_routes, only: [:new, :create, :destroy, :edit, :index, :update]
   resources :trains, only: [:create, :new, :edit, :update, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:home, :create, :new]
   root 'sessions#home'
+  get '/train_routes/save' => 'train_routes#save', :as => 'save_route'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -12,7 +13,11 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :users do
-    resources :train_routes, only: [:index, :show, :new, :edit]
+    resources :train_routes, only: [:index, :show, :new, :edit, :update]
+  end
+
+  resources :trains do
+    resources :train_routes, only: [:index, :create, :show, :new, :edit, :update]
   end
   
   #match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
