@@ -9,6 +9,6 @@
     <% end %>  
 <% end %>
 
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
  <%= link_to "create a new train", new_train_path %>
 <% end %>
