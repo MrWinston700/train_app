@@ -1,0 +1,19 @@
+<% if @train_route.errors.any? %>
+  <div class="fields_with_errors">
+    <ul>
+    <% @train_route.errors.full_messages.each do |msg| %>
+      <li style="color:red;"><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+
+  <%= form_for(@train_route) do |f| %>
+    <%= f.label :departing %>
+    <%= f.text_field :departing %>
+    <br>
+    <%= f.label :destination %>
+    <%= f.text_field :destination %>
+
+    <%= f.submit %>
+<% end %>
+

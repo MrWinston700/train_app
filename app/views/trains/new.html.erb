@@ -7,6 +7,7 @@
     </ul>
   </div>
 <% end %>
+
 <% if current_user.admin? %>
 <%= form_for(@train) do |f| %>
     <%= f.label :ident_number %>
@@ -17,7 +18,6 @@
     <br>
     <%= f.label :max_pax %>
     <%= f.text_field :max_pax%>
-
     
     <%= f.fields_for :train_routes, @train.train_routes.build do |nest_field| %>
         
