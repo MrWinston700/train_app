@@ -1,0 +1,129 @@
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+<% if @train.errors.any? %>
+  <div class="fields_with_errors">
+    <ul>
+    <% @train.errors.full_messages.each do |msg| %>
+      <li style="color:red;"><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if current_user.admin? %>
+<div class="container">
+<%= form_for(@train) do |f| %>
+  <div class="row">
+    <div class="col-25">
+      <%= f.label :ident_number %>
+    </div>
+    <div class="col-75">
+      <%= f.text_field :ident_number %>
+    </div>
+  </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <%= f.label :model %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :model %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <%= f.label :max_pax %>
+      </div>
+      <div class="col-75">
+        <%= f.text_field :max_pax%>
+      </div>
+    </div>
+    
+    <%= f.fields_for :train_routes, @train.train_routes.build do |nest_field| %>
+        <div class="row">
+          <div class="col-25">
+            <%= nest_field.label :destination, "destination:" %>
+          </div>
+          <div class="col-75">
+            <%= nest_field.text_field :destination %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-25">
+            <%= nest_field.label :departing, "departing:" %>
+          </div>
+          <div class="col-75">
+            <%= nest_field.text_field :departing %>
+          </div>
+        </div>
+    <% end %>
+    <%= f.submit %>
+
+<% end %>
+</div>
+<% end %>

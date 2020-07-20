@@ -5,18 +5,28 @@ class TrainsController < ApplicationController
     end
 
     def create
-        @train = Train.create(train_params)
-        redirect_to root_path
+        @train = Train.new(train_params)
+        if @train.valid?
+            @train.save
+            redirect_to root_path
+        else
+            render new_train_path
+        end
     end
 
     def edit
         @train = Train.find_by_id(params[:id])
+    end
+
+    def update
+        @train = Train.find_by_id(params[:id])
         
         if @train.valid?
+            @train.update(train_params)
             @train.save
-            redirect_to user_path(@train.user)
+            redirect_to root_path
         else
-            render 
+            render edit_train_path
         end
     end
 
@@ -34,6 +44,6 @@ class TrainsController < ApplicationController
     private
 
     def train_params
-        params.require(:train).permit(:ident_number, :model, :max_pax, train_routes_attributes: [:destination, :departing, :train_id])
+        params.require(:train).permit(:ident_number, :model, :max_pax, train_routes_attributes: [:destination, :departing, :user_id])
     end
 end
