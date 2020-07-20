@@ -1,14 +1,19 @@
 <style>
     body {
         flex: 1 1 auto;
+        text-align: center;
     }
 
     div.aRoute {
+        position:relative; 
+        left:80px; 
+        top:80px;
         background-color: #eeeeee;
         height: 400px;
         width: 370px;
         padding: 100px;
         border-radius: 10px;
+        opacity: 0.9;
     }
 
     li {
@@ -16,9 +21,13 @@
         list-style: none;
         padding-right: 20px;
     }
+
+    button {
+        color: black;
+    }
 </style>
 </br>
-<p> book to your liking today </p>
+
 <% if logged_in? %>
     <body>
     <% @routes.each do |route| %>
@@ -41,7 +50,7 @@
 
         <%= form_tag('/train_routes/save', method: :get) do %>
             <%= hidden_field_tag :route_id, route.id %>
-            <button><%= submit_tag 'book this route' %></button>
+            <%= submit_tag 'book this route' %>
         </div>
         <% end %>
         <%end%>

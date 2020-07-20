@@ -5,8 +5,13 @@ class TrainsController < ApplicationController
     end
 
     def create
-        @train = Train.create(train_params)
-        redirect_to root_path
+        @train = Train.new(train_params)
+        if @train.valid?
+            @train.save
+            redirect_to root_path
+        else
+            render new_train_path
+        end
     end
 
     def edit

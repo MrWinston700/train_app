@@ -1,6 +1,10 @@
 <style>
 
+
     div.aRoute {
+        position:relative; 
+        left:80px; 
+        top:80px;
         background-color: #eeeeee;
         height: 300px;
         width: 370px;
@@ -13,15 +17,31 @@
         list-style: none;
         padding-right: 10px;
     }
-</style>
 
-<h1> 
+    p {
+        position:relative; 
+        left:80px; 
+        top:80px;
+        font-weight: 600;
+        font-size: 1.5em;
+        background-color: grey;
+        width: 400px;
+    }
+
+    button.bottom {
+        position:relative; 
+        left:80px; 
+        top:80px;
+    }
+</style>
+<body>
+<p> 
     <%= @user.name %> 
     <%= @user.email %>
     <% if current_user != nil && current_user.admin? %>
         <strong> Admin </strong>
     <% end %>
-</h1>
+</p>
 
 <% if @user.train_routes.empty? %>
     <p>you currently do not have any route. visit the home page to see available trains</p>
@@ -41,5 +61,6 @@
     <% end %>
 <% end %>
 
-<button><%= link_to "see all my routes", user_train_routes_path(@user) %></button>
-<button><%= link_to "edit user", edit_user_path %></button>
+<button class="bottom"><%= link_to "see all my routes", user_train_routes_path(@user) %></button>
+<button class="bottom"><%= link_to "edit user", edit_user_path %></button>
+<body>
