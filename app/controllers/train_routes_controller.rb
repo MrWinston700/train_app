@@ -1,34 +1,48 @@
 class TrainRoutesController < ApplicationController
-    @@my_id = nil
+    @@temp_train_id = nil
     def new
         @train_route = TrainRoute.new
-        render :new
+
+        #the code below is to capture to the train id while it's being rendered in the new nested route url. It's in an if params due to fact that we have varied way of creating new train routes
         if params
-            @@my_id = params[:train_id]
-        end
+            @@temp_train_id = params[:train_id]
+         end
+         binding.pry
+        render :new
+
+        
     end
 
     def create
+
         @train_route = TrainRoute.new(train_route_params)
-        if @@my_id != nil
-            @train = Train.find_by_id(@@my_id)
+        # refer to comment above
+        if @@temp_train_id != nil
+            @train = Train.find_by_id(@@temp_train_id)
             @train.train_routes << @train_route
             @train.save
-            @@my_id = nil
+            @@temp_train_id = nil
             current_user.train_routes << @train_route 
             current_user.save
         else
-        current_user.train_routes << @train_route 
-        current_user.save
+            current_user.train_routes << @train_route 
+            current_user.save
         end
-        redirect_to root_path
+        #because render is being used, sessions/home view does not have access to the sessions controller. That's why we have @routes below
+        @routes = TrainRoute.all
+        render 'sessions/home'
+
     end
 
     def save
         @train_route = TrainRoute.find_by(id: params[:route_id])
         current_user.train_routes << @train_route 
         current_user.save
-        redirect_to root_path
+        @booking_alert = true
+
+        @routes = TrainRoute.all
+        render 'sessions/home'
+        binding.pry
     end
 
     def destroy
@@ -53,8 +67,13 @@ class TrainRoutesController < ApplicationController
     end
 
     def index
-        @user = User.find_by(id: params[:user_id])
-        @train_routes = @user.train_routes
+        binding.pry
+        if params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            @train_routes = @user.train_routes
+        else
+            @train_routes = TrainRoute.all
+        end
     end
 
     def train_route_params
