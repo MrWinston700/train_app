@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :train_routes, only: [:new, :create, :destroy, :edit, :index, :update]
-  resources :trains, only: [:create, :new, :edit, :update, :destroy]
+  resources :trains, only: [:create, :new, :edit, :update, :destroy, :index]
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:home, :create, :new]
   root 'sessions#home'

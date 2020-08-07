@@ -1,33 +1,22 @@
 class TrainRoutesController < ApplicationController
-    @@temp_train_id = nil
-    def new
-        @train_route = TrainRoute.new
 
-        #the code below is to capture to the train id while it's being rendered in the new nested route url. It's in an if params due to fact that we have varied way of creating new train routes
-        if params
-            @@temp_train_id = params[:train_id]
-         end
-         binding.pry
-        render :new
-
-        
+    def new 
+        if params[:train_id]
+            @train = Train.find_by_id(params[:train_id])
+            @train_route = @train.train_routes.build
+        end
     end
 
     def create
-
         @train_route = TrainRoute.new(train_route_params)
-        # refer to comment above
-        if @@temp_train_id != nil
-            @train = Train.find_by_id(@@temp_train_id)
-            @train.train_routes << @train_route
-            @train.save
-            @@temp_train_id = nil
-            current_user.train_routes << @train_route 
-            current_user.save
-        else
+        if params[:train_route][:train_id]
+            @train_id = params[:train_route][:train_id].to_i
+            @train = Train.find_by_id(@train_id)
+            @train << @train_route
             current_user.train_routes << @train_route 
             current_user.save
         end
+        binding.pry
         #because render is being used, sessions/home view does not have access to the sessions controller. That's why we have @routes below
         @routes = TrainRoute.all
         render 'sessions/home'
@@ -42,7 +31,6 @@ class TrainRoutesController < ApplicationController
 
         @routes = TrainRoute.all
         render 'sessions/home'
-        binding.pry
     end
 
     def destroy
@@ -52,9 +40,7 @@ class TrainRoutesController < ApplicationController
     end
 
     def edit
-        @train_route = TrainRoute.find_by(id: params[:id])
-        
-        
+        @train_route = TrainRoute.find_by(id: params[:id]) 
     end
 
     def update
@@ -67,7 +53,6 @@ class TrainRoutesController < ApplicationController
     end
 
     def index
-        binding.pry
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
             @train_routes = @user.train_routes

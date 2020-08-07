@@ -41,6 +41,10 @@ class TrainsController < ApplicationController
         redirect_to user_path
     end
 
+    def index
+        @trains = Train.all
+    end
+
     private
 
     def train_params
