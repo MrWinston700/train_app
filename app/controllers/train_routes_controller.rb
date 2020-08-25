@@ -16,7 +16,7 @@ class TrainRoutesController < ApplicationController
             current_user.train_routes << @train_route 
             current_user.save
         end
-        binding.pry
+        
         #because render is being used, sessions/home view does not have access to the sessions controller. That's why we have @routes below
         @routes = TrainRoute.all
         render 'sessions/home'
