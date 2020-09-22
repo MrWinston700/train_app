@@ -1,7 +1,7 @@
 require 'securerandom'
 class SessionsController < ApplicationController
     def home  
-      @routes = TrainRoute.all   
+      @routes = TrainRoute.all_in_order
     end
   
     def new
@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
   
     def create
       if request.env['omniauth.auth'] != nil
-        @user = User.find_by(name: request.env['omniauth.auth']['info']['nickname']) || User.find_by(name: request.env['omniauth.auth']['info']['name'])          
-        @user = User.create(name: request.env['omniauth.auth']['info']['name'], password: SecureRandom.hex) unless @user !=nil
+        @user = User.find_by(name: request.env['omniauth.auth']['info']['name']) || @user = User.create(name: request.env['omniauth.auth']['info']['name'], password: SecureRandom.hex) unless @user !=nil
         log_in @user 
         redirect_to user_path(@user)
       else
@@ -22,7 +21,7 @@ class SessionsController < ApplicationController
             log_in @user 
             redirect_to user_path(@user)
           else
-            @error = "could not log in. user or password is invalid"
+            @error = "could not log in. Username or password is invalid"
             render 'sessions/new'
           end
       end

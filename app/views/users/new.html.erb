@@ -1,4 +1,8 @@
-<% if @user.errors.any? %>
+<%= stylesheet_link_tag "signup.css" %>
+
+<div class="login-body">
+
+  <% if @user.errors.any?%>
   <div class="fields_with_errors">
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
@@ -6,18 +10,31 @@
     <% end %>
     </ul>
   </div>
-<% end %>
-<%= form_for(@user) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password%>
-    
-    <%= f.submit %>
+  <% end %>
 
-<% end %> 
-<p><%= link_to 'Sign up in with the GitHub', '/auth/github'%>.</p>
+
+  <div class="login-div">
+    <p class="title">Login</p>
+    <div class="fields">
+      <%= form_for(@user) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password%>
+      <div class="signin-button">
+        <%= f.submit %>
+      </div
+    </div>
+    <% end %>
+  </div>
+    <p id="githubLogin"><%= link_to 'Sign up with the GitHub', '/auth/github'%></p>
+  </div>
+
+</div>
+
+</div>
+

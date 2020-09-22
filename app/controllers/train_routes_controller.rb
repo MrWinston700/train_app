@@ -12,14 +12,14 @@ class TrainRoutesController < ApplicationController
         if params[:train_route][:train_id]
             @train_id = params[:train_route][:train_id].to_i
             @train = Train.find_by_id(@train_id)
-            @train << @train_route
+            @train.train_routes << @train_route
             current_user.train_routes << @train_route 
             current_user.save
         end
         
-        #because render is being used, sessions/home view does not have access to the sessions controller. That's why we have @routes below
-        @routes = TrainRoute.all
-        render 'sessions/home'
+        
+        
+        redirect_to user_path(current_user)
 
     end
 
@@ -29,14 +29,13 @@ class TrainRoutesController < ApplicationController
         current_user.save
         @booking_alert = true
 
-        @routes = TrainRoute.all
-        render 'sessions/home'
+        redirect_to user_path(current_user)
     end
 
     def destroy
         @train_route = TrainRoute.find_by(id: params[:id])
         @train_route.delete
-        redirect_to root_path
+        redirect_to user_path(current_user)
     end
 
     def edit
@@ -46,7 +45,7 @@ class TrainRoutesController < ApplicationController
     def update
         if @train_route.valid?
             @train_route.save
-            redirect_to user_path(@train.user)
+            redirect_to user_path(current_user)
         else
             
         end
@@ -64,4 +63,5 @@ class TrainRoutesController < ApplicationController
     def train_route_params
         params.require(:train_route).permit(:departing, :destination, :train_id)
     end
+
 end
