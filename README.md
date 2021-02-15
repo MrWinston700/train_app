@@ -16,14 +16,10 @@ Fork and clone repo
 
     $ git clone https://github.com/superHotStuff/train_app
     
-
-Using two terminals, switch to each respective directory
-
-    $ cd train_app
     
-
 Backend terminal instructions: 
 
+    $ cd train_app
     $ bundle install
     $ rails db:migrate
     $ rails db:seed
