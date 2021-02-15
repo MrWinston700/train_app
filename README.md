@@ -1,24 +1,46 @@
-# README
+# train_app README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Video Walkthrough
 
-Things you may want to cover:
+# real_world_math_frontend (front end)
 
-* Ruby version
+This was built using a Rails API back end, which communicates with the front end, built with React and Redux.
 
-* System dependencies
+## Overview
 
-* Configuration
+This project was made with the goal of learning the rails ecosystem. It's an app that uses rails authentication to save user data as well as keep them logged in via sessions
 
-* Database creation
+## Installation
 
-* Database initialization
+Fork and clone repo
 
-* How to run the test suite
+    $ git clone https://github.com/superHotStuff/train_app
+    
 
-* Services (job queues, cache servers, search engines, etc.)
+Using two terminals, switch to each respective directory
 
-* Deployment instructions
+    $ cd train_app
+    
 
-* ...
+Backend terminal instructions: 
+
+    $ bundle install
+    $ rails db:migrate
+    $ rails db:seed
+    $ rails s
+
+## Usage
+
+User will have to sign up or log in to fully interact with website.  
+Once logged in, user will be able to see their profile with all the trains they have booked along with the additional routes they have created for that train
+User can delete any route they no longer want
+User can add routes via the home page with routes created by the admin as well as others
+
+## Contributing
+
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
