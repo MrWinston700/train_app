@@ -2,9 +2,9 @@
 
 # Video Walkthrough
 
-# real_world_math_frontend (front end)
+# train_app
 
-This was built using a Rails API back end, which communicates with the front end, built with React and Redux.
+This project was built entirely from the rails ecosystem
 
 ## Overview
 
