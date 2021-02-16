@@ -17,14 +17,11 @@
     <p class="title">Login</p>
     <div class="fields">
       <%= form_for(@user) do |f| %>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: "name" %>
         <br>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+        <%= f.text_field :email, placeholder: "email" %>
         <br>
-        <%= f.label :password %>
-        <%= f.password_field :password%>
+        <%= f.password_field :password, placeholder: "password"%>
       <div class="signin-button">
         <%= f.submit %>
       </div

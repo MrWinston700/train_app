@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+ grid: center;
+
+ background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://www.telegraph.co.uk/content/dam/news/2019/09/19/TELEMMGLPICT000207814062_trans_NvBQzQNjv4BqeK8ehqBZJSTiVTgumtathRyT9BmsXxLzAJRaHIt-hvM.jpeg") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+ }
+
+ nav a{
+float: center;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 28px;
+ }
