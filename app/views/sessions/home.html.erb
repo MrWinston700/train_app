@@ -26,14 +26,14 @@
         color: black;
     }
 </style>
-</br>
 
+<body>
 <% if logged_in? %>
 <% if @booking_alert %>
 
     <%= javascript_tag "alert('You have successfully booked a route')" %>
 <% end %>
-    <body>
+    
     <% @routes.each do |route| %>
         <% if route.train != nil %>
         <div class = "aRoute">
