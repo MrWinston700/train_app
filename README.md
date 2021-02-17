@@ -2,9 +2,16 @@
 
 # Video Walkthrough
 
-# train_app
+https://youtu.be/PY7toc88tCk
 
-This project was built entirely from the rails ecosystem
+# tools used
+
+Ruby on Rails, SQLite, OmniAuth
+
+# features
+
+Login via OmniAuth through github
+Full crud for train routes owned by user
 
 ## Overview
 
