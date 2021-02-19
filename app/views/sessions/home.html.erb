@@ -29,10 +29,10 @@
 
 <body>
 <% if logged_in? %>
-<% if @booking_alert %>
 
-    <%= javascript_tag "alert('You have successfully booked a route')" %>
-<% end %>
+    <% if @booking_alert %>
+        <%= javascript_tag "alert('You have successfully booked a route')" %>
+    <% end %>
     
     <% @routes.each do |route| %>
         <% if route.train != nil %>

@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
             log_in @user 
             redirect_to user_path(@user)
           else
-            @error = "could not log in. Username or password is invalid"
+            @error = "Could not log in. username or password is invalid"
             render 'sessions/new'
           end
       end

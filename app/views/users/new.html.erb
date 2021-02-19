@@ -2,15 +2,7 @@
 
 <div class="login-body">
 
-  <% if @user.errors.any?%>
-  <div class="fields_with_errors">
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li style="color:red;"><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
+  
 
 
   <div class="login-div">
@@ -29,6 +21,15 @@
     <% end %>
   </div>
     <p id="githubLogin"><%= link_to 'Sign up with the GitHub', '/auth/github'%></p>
+    <% if @user.errors.any?%>
+      <div class="fields_with_errors">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li style="color:red;"><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 
 </div>
