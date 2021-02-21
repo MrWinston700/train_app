@@ -1,19 +1,18 @@
 <style>
     body {
-        flex: 1 1 auto;
         text-align: center;
     }
 
     div.aRoute {
         position:relative; 
-        left:80px; 
-        top:80px;
         background-color: #eeeeee;
         height: 400px;
         width: 430px;
         padding: 100px;
         border-radius: 10px;
         opacity: 0.9;
+        margin: auto; 
+        
     }
 
     li {
@@ -25,9 +24,17 @@
     button {
         color: black;
     }
+
+    #main {
+        margin-top: 40px;
+        display: grid;
+        justify-content: auto;
+        grid-template-columns: auto auto auto;
+        grid-gap: 10px;
+    }
 </style>
 
-<body>
+<div id="main">
 <% if logged_in? %>
 
     <% if @booking_alert %>
@@ -59,13 +66,10 @@
         <% end %>
         <%end%>
         
-        
-        
-        </br>
     <% end %> 
 <% end %>
 
 <% if current_user != nil && current_user.admin? %>
     <p><%= link_to "create a train and route", new_train_path %></p>
 <% end %>
-</body>
+</div>
