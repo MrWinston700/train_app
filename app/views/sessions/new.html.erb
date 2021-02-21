@@ -2,13 +2,7 @@
 
 <div class="login-body">
 
-<% if @error != nil%>
-  <div class="fields_with_errors">
-    <ul>
-      <li style="color:red;"><%= @error %></li>
-    </ul>
-  </div>
-<% end %>
+
 
 
 <div class="login-div">
@@ -25,8 +19,19 @@
     <% end %>
   </div>
     <p id="githubLogin"><%= link_to 'Sign in with the GitHub', '/auth/github'%></p>
+
+    <% if @error != nil%>
+  <div class="fields_with_errors">
+    <ul>
+      <li style="color:red;"><%= @error %></li>
+    </ul>
+  </div>
+  <% end %>
+
+  </div>
+  
   </div>
 
-</div>
+  
 
 </div>
