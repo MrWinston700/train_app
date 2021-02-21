@@ -39,6 +39,14 @@ Once logged in, user will be able to see their profile with all the trains they 
 User can delete any route they no longer want
 User can add routes via the home page with routes created by the admin as well as others
 
+## challenge
+
+Most challenging aspect of this project was setting up omniAuth for user sign in/ sign up and creating a nested attribute for users to submit
+
+## future implementations
+
+ ui overhaul
+
 ## Contributing
 
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
