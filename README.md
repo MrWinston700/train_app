@@ -1,21 +1,21 @@
 # train_app README
 
-# Video Walkthrough
+## Video Walkthrough
 
 https://youtu.be/PY7toc88tCk
 
-# tools used
+## Tools Used
 
 Ruby on Rails, SQLite, OmniAuth
 
-# features
+## Features
 
-Login via OmniAuth through github
-Full crud for train routes owned by user
+Login via OmniAuth through github.
+Full crud for train routes owned by user.
 
 ## Overview
 
-This project was made with the goal of learning the rails ecosystem. It's an app that uses rails authentication to save user data as well as keep them logged in via sessions
+This project was made with the goal of learning the rails ecosystem. It's an app that uses rails authentication to save user data as well as keep them logged in via sessions.
 
 ## Installation
 
@@ -35,15 +35,15 @@ Backend terminal instructions:
 ## Usage
 
 User will have to sign up or log in to fully interact with website.  
-Once logged in, user will be able to see their profile with all the trains they have booked along with the additional routes they have created for that train
-User can delete any route they no longer want
-User can add routes via the home page with routes created by the admin as well as others
+Once logged in, user will be able to see their profile with all the trains they have booked along with the additional routes they have created for that train.
+User can delete any route they no longer want.
+User can add routes via the home page with routes created by the admin as well as others.
 
-## challenge
+## Challenge
 
-Most challenging aspect of this project was setting up omniAuth for user sign in/ sign up and creating a nested attribute for users to submit
+Most challenging aspect of this project was setting up omniAuth for user sign in/ sign up and creating a nested attribute for users to submit.
 
-## future implementations
+## Future Implementations
 
  ui overhaul
 
