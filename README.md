@@ -1,4 +1,4 @@
-# train_app README
+# train_app
 
 ## Video Walkthrough
 
@@ -10,8 +10,8 @@ Ruby on Rails, SQLite, OmniAuth
 
 ## Features
 
-Login via OmniAuth through github.
-Full crud for train routes owned by user.
+Login via OmniAuth through GitHub.
+Full CRUD for train routes owned by user.
 
 ## Overview
 
@@ -41,11 +41,11 @@ User can add routes via the home page with routes created by the admin as well a
 
 ## Challenge
 
-Most challenging aspect of this project was setting up omniAuth for user sign in/ sign up and creating a nested attribute for users to submit.
+Most challenging aspect of this project was setting up OmniAuth for user sign in/ sign up and creating a nested attribute for users to submit.
 
 ## Future Implementations
 
- ui overhaul
+ UI overhaul
 
 ## Contributing
 
